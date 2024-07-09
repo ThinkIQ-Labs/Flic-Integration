@@ -1,0 +1,21 @@
+{
+    "run": true,
+    "document": {
+        "template": false
+    },
+    "importance": null,
+    "description": null,
+    "edit_status": "1",
+    "output_type": "class",
+    "script_type": "php",
+    "display_name": "FlicClassScript",
+    "relative_name": "flicclassscript",
+    "initial_inputs": {
+        "start_timestamp": "2024-06-04T13:59:14.000+00:00",
+        "interval_seconds": "60"
+    },
+    "cron_expression": "0 * * * * ? *",
+    "updated_timestamp": "2024-06-06 13:34:48.6643+00",
+    "max_acceptable_run_secs": 0,
+    "use_outputs_from_last_run": false
+}

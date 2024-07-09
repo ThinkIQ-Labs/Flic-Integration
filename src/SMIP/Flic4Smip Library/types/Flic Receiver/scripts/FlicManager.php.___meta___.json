@@ -1,0 +1,21 @@
+{
+    "run": false,
+    "document": {
+        "template": false
+    },
+    "importance": null,
+    "description": null,
+    "edit_status": "1",
+    "output_type": "display",
+    "script_type": "php",
+    "display_name": "FlicManager",
+    "relative_name": "flicmanager",
+    "initial_inputs": {
+        "start_timestamp": "2024-06-01T20:06:28.000+00:00",
+        "interval_seconds": "60"
+    },
+    "cron_expression": "0 * * * * ? *",
+    "updated_timestamp": "2024-07-06 20:13:24.497254+00",
+    "max_acceptable_run_secs": 0,
+    "use_outputs_from_last_run": true
+}
