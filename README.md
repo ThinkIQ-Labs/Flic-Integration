@@ -105,7 +105,7 @@ You'll need to install the Flic app on a smart phone to be able to get a configu
 
 - Power up the Flic Hub using USB power.
 - Use the phone app to detect and add the Hub.
-- Unless the factory password was modified You'll want to use the password from the back of the Hub.
+- Unless the factory password was modified, you'll want to use the password from the back of the Hub.
 - For the Hub to be able to communicate with the SMIP, you'll need to configure internet access either using WiFi or an Ethernet connection.
 
 ### Step 3: Configure more Buttons. Improve your Workflows.
