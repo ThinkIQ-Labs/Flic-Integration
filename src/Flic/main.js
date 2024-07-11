@@ -10,6 +10,7 @@ var buttonManager = require("buttons");
 var http = require("http");
 var token = "";
 var messagesAttrId = 0;
+var batteryAttrId = 0;
 var mappingObject = null;
 var expEpoch = 0;
 
@@ -41,6 +42,9 @@ query q2 {     \
   ) {     																		\
     onObject {     																\
       displayName     															\
+			attributes{											\
+				id displayName										\
+			}																\
 		childObjects(condition: { displayName: \"" + objName + "\" }) {   \
         displayName																\
         attributes {															\
@@ -69,9 +73,21 @@ query q2 {     \
 
 function getSendMessageQuery(aPayload) {
 
+	var dateString = (new Date()).toISOString();
+	
 	var query = 'mutation m1 { replaceTimeSeriesRange( input: { attributeOrTagId: "' + messagesAttrId + 
-			'" entries: [{ value: ' + JSON.stringify(JSON.stringify(aPayload)) + ', timestamp: "' + (new Date()).toISOString() + 
+			'" entries: [{ value: ' + JSON.stringify(JSON.stringify(aPayload)) + ', timestamp: "' + dateString + 
 			'", status: "0" }]}) {clientMutationId json}}';
+	
+	var batteryAttrValue = aPayload.button.batteryStatus;
+	if(batteryAttrId > 0){
+		query = 'mutation m1 { m1: replaceTimeSeriesRange( input: { attributeOrTagId: "' + messagesAttrId + 
+			'" entries: [{ value: ' + JSON.stringify(JSON.stringify(aPayload)) + ', timestamp: "' + dateString + 
+			'", status: "0" }]}) {clientMutationId json} mb: replaceTimeSeriesRange( input: { attributeOrTagId: "' + batteryAttrId + 
+			'" entries: [{ value: "' + batteryAttrValue + '", timestamp: "' + dateString + 
+			'", status: "0" }]}) {clientMutationId json}}';
+	}
+	
 	if (mappingObject == null) {
 		// use simple query
 	} else {
@@ -84,8 +100,8 @@ function getSendMessageQuery(aPayload) {
 		var targetAttrCurrentValue = null;
 		var flicMode = null;
 		var argument = null;
-		for(var i=0; i<data.attributes[0].onObject.childObjects[0].attributes.length; i++){
-			const attr = data.attributes[0].onObject.childObjects[0].attributes[i];
+		for(var i=0; i<mappingObject.attributes.length; i++){
+			const attr = mappingObject.attributes[i];
 			switch (attr.displayName){
 				case "Target":
 					if (attr.referencedAttribute != null) {
@@ -138,16 +154,20 @@ function getSendMessageQuery(aPayload) {
 						}
 						console.log("New Value: " + newValue);
 						query = 'mutation m1 { m1: replaceTimeSeriesRange( input: { attributeOrTagId: "' + messagesAttrId + 
-							'" entries: [{ value: ' + JSON.stringify(JSON.stringify(aPayload)) + ', timestamp: "' + (new Date()).toISOString() + 
-							'", status: "0" }]}) {clientMutationId json} m2: replaceTimeSeriesRange( input: { attributeOrTagId: "' + targetAttrId + 
-							'" entries: [{ value: "' + newValue + '", timestamp: "' + (new Date()).toISOString() + '", status: "0" }]}) {clientMutationId json}}';
+							'" entries: [{ value: ' + JSON.stringify(JSON.stringify(aPayload)) + ', timestamp: "' + dateString + 
+							'", status: "0" }]}) {clientMutationId json} mb: replaceTimeSeriesRange( input: { attributeOrTagId: "' + batteryAttrId + 
+			'" entries: [{ value: "' + batteryAttrValue + '", timestamp: "' + dateString + 
+			'", status: "0" }]}) {clientMutationId json} m2: replaceTimeSeriesRange( input: { attributeOrTagId: "' + targetAttrId + 
+							'" entries: [{ value: "' + newValue + '", timestamp: "' + dateString + '", status: "0" }]}) {clientMutationId json}}';
 					} else {
 						var newValue = argument;
 						console.log("New Value: " + newValue);
 						query = 'mutation m1 { m1: replaceTimeSeriesRange( input: { attributeOrTagId: "' + messagesAttrId + 
-							'" entries: [{ value: ' + JSON.stringify(JSON.stringify(aPayload)) + ', timestamp: "' + (new Date()).toISOString() + 
-							'", status: "0" }]}) {clientMutationId json} m2: replaceTimeSeriesRange( input: { attributeOrTagId: "' + targetAttrId + 
-							'" entries: [{ value: "' + newValue + '", timestamp: "' + (new Date()).toISOString() + '", status: "0" }]}) {clientMutationId json}}';
+							'" entries: [{ value: ' + JSON.stringify(JSON.stringify(aPayload)) + ', timestamp: "' + dateString + 
+							'", status: "0" }]}) {clientMutationId json} mb: replaceTimeSeriesRange( input: { attributeOrTagId: "' + batteryAttrId + 
+			'" entries: [{ value: "' + batteryAttrValue + '", timestamp: "' + dateString + 
+			'", status: "0" }]}) {clientMutationId json} m2: replaceTimeSeriesRange( input: { attributeOrTagId: "' + targetAttrId + 
+							'" entries: [{ value: "' + newValue + '", timestamp: "' + dateString + '", status: "0" }]}) {clientMutationId json}}';
 					}
 					break;
 					
@@ -164,8 +184,10 @@ function getSendMessageQuery(aPayload) {
 						}
 						console.log("New Value: " + newValue);
 						query = 'mutation m1 { m1: replaceTimeSeriesRange( input: { attributeOrTagId: "' + messagesAttrId + 
-							'" entries: [{ value: ' + JSON.stringify(JSON.stringify(aPayload)) + ', timestamp: "' + (new Date()).toISOString() + 
-							'", status: "0" }]}) {clientMutationId json} m2: updateAttribute(input: { id: "' + targetAttrId + 
+							'" entries: [{ value: ' + JSON.stringify(JSON.stringify(aPayload)) + ', timestamp: "' + dateString + 
+							'", status: "0" }]}) {clientMutationId json} mb: replaceTimeSeriesRange( input: { attributeOrTagId: "' + batteryAttrId + 
+			'" entries: [{ value: "' + batteryAttrValue + '", timestamp: "' + dateString + 
+			'", status: "0" }]}) {clientMutationId json} m2: updateAttribute(input: { id: "' + targetAttrId + 
 							'", patch: { enumerationValue: "' + newValue + '" } }) {clientMutationId attribute { enumerationValue }}}';
 						//console.log(query);
 					} else {
@@ -173,9 +195,11 @@ function getSendMessageQuery(aPayload) {
 						var newValue = Number(targetAttrCurrentValue) + Number(argument);
 						console.log("New Value: " + newValue);
 						query = 'mutation m1 { m1: replaceTimeSeriesRange( input: { attributeOrTagId: "' + messagesAttrId + 
-							'" entries: [{ value: ' + JSON.stringify(JSON.stringify(aPayload)) + ', timestamp: "' + (new Date()).toISOString() + 
-							'", status: "0" }]}) {clientMutationId json} m2: replaceTimeSeriesRange( input: { attributeOrTagId: "' + targetAttrId + 
-							'" entries: [{ value: "' + newValue + '", timestamp: "' + (new Date()).toISOString() + '", status: "0" }]}) {clientMutationId json}}';
+							'" entries: [{ value: ' + JSON.stringify(JSON.stringify(aPayload)) + ', timestamp: "' + dateString + 
+							'", status: "0" }]}) {clientMutationId json} mb: replaceTimeSeriesRange( input: { attributeOrTagId: "' + batteryAttrId + 
+			'" entries: [{ value: "' + batteryAttrValue + '", timestamp: "' + dateString + 
+			'", status: "0" }]}) {clientMutationId json} m2: replaceTimeSeriesRange( input: { attributeOrTagId: "' + targetAttrId + 
+							'" entries: [{ value: "' + newValue + '", timestamp: "' + dateString + '", status: "0" }]}) {clientMutationId json}}';
 					}
 					break;
 					
@@ -187,9 +211,11 @@ function getSendMessageQuery(aPayload) {
 					}
 					console.log("New Value: " + newValue);
 					query = 'mutation m1 { m1: replaceTimeSeriesRange( input: { attributeOrTagId: "' + messagesAttrId + 
-						'" entries: [{ value: ' + JSON.stringify(JSON.stringify(aPayload)) + ', timestamp: "' + (new Date()).toISOString() + 
-						'", status: "0" }]}) {clientMutationId json} m2: replaceTimeSeriesRange( input: { attributeOrTagId: "' + targetAttrId + 
-						'" entries: [{ value: "' + newValue + '", timestamp: "' + (new Date()).toISOString() + '", status: "0" }]}) {clientMutationId json}}';
+						'" entries: [{ value: ' + JSON.stringify(JSON.stringify(aPayload)) + ', timestamp: "' + dateString + 
+						'", status: "0" }]}) {clientMutationId json} mb: replaceTimeSeriesRange( input: { attributeOrTagId: "' + batteryAttrId + 
+			'" entries: [{ value: "' + batteryAttrValue + '", timestamp: "' + dateString + 
+			'", status: "0" }]}) {clientMutationId json} m2: replaceTimeSeriesRange( input: { attributeOrTagId: "' + targetAttrId + 
+						'" entries: [{ value: "' + newValue + '", timestamp: "' + dateString + '", status: "0" }]}) {clientMutationId json}}';
 					break;
 					
 				default:
@@ -288,6 +314,17 @@ function postMessage(obj) {
 			//console.log(JSON.stringify(data));
 			if (data.attributes.length > 0) {
 				// there is a mapping for this button
+				
+				// find battery status attribute and add to base query
+				var batteryAttrIndex = 0;
+				while(data.attributes[0].onObject.attributes[batteryAttrIndex].displayName != "Battery Status" && batteryAttrIndex < data.attributes[0].onObject.attributes.lenth){
+					batteryAttrIndex++;
+				}
+				if(data.attributes[0].onObject.attributes[batteryAttrIndex].displayName == "Battery Status"){
+					batteryAttrId = data.attributes[0].onObject.attributes[batteryAttrIndex].id;
+					console.log("Battery Attr Id: " + batteryAttrId);
+				}
+				
 				if (data.attributes[0].onObject.childObjects.length > 0) {
 					// there is a mapping for this click event
 					mappingObject = data.attributes[0].onObject.childObjects[0];
