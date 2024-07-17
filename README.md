@@ -92,41 +92,43 @@ const authenticator = {
 
 ### Step 1: Install the Flic App on a Phone
 
-Yes, to be able to get a configured Flic Hub with pre-installed and mapped buttons, you'll need to install the Flic app on a smart phone:
+You'll need to install the Flic app on a smart phone to be able to get a configured Flic Hub with pre-installed and mapped buttons to work. This is mostly to configure networking, although an Ethernet connection with Internet access may be sufficient:
 
 - Create an account using an email and a password.
-- You can opt out of newsletters, even though they're lovely and from Sweden.
+- You can opt out of newsletters, even though they're from lovely Sweden.
 - You can opt out of notifications.
-- You _can not_ opt out of your device being able to detect nearby devices. With smart buttons and all, that's the whole point.
+- You _can not_ opt out of your device being able to detect nearby devices.
 
 ![Flic Hub Permissions](./img/flic_hub_permissions.png)
+
 ### Step 2: Detect and Add the Flic Hub
 
-- Power up the Flic Hub.
+- Power up the Flic Hub using USB power.
 - Use the phone app to detect and add the Hub.
-- You'll have to provide the factory password from the back of the Hub as a password.
+- Unless the factory password was modified, you'll want to use the password from the back of the Hub.
 - For the Hub to be able to communicate with the SMIP, you'll need to configure internet access either using WiFi or an Ethernet connection.
+
 ### Step 3: Configure more Buttons. Improve your Workflows.
 
-Congratulations. Your Hub knows the Flic Buttons that were previously paired (and probably shipped with the Hub). The JavaScript module should be running and sending Flic Button click events to the SMIP as configured there. However, ...
+Congratulations. Your Hub knows the Flic Smart Buttons that were previously paired (and probably shipped to you with the Hub). The JavaScript Flic2SMIP module should be running and sending Flic Button click events to the SMIP as configured there. However, ...
 
-... you can remove buttons and add buttons at will. You can see new button click events in the SMIP and configure them to do a variety of actions and target any attribute in your model. 
+... using the Flick phone app you can remove buttons and add buttons at will. You can discover new button click events in the SMIP and configure them to do a variety of actions and target any attribute in your model. 
 
 Go click!!!
 
 ## Appendix: WiFi vs. Ethernet and How to Secure your Flic Hub
 
-This is just a brief summary of observations from users of the Flic products. We don't make the Flic products.
+This is not a detailed cybersecurity review, but a brief summary of observations from users of the Flic products.
 
 - Communication between a Hub and a the Flic phone app does not require the 2 devices to be on the same network. The phone app can communicate with a Hub just by being in it's vicinity.
-_But how???_ We'll need to find out. Flic documentation is pretty good. We're sure it's in there.
+_But how???_ We'll need to find out. The Flic documentation is pretty good. We're sure it's in there.
 
  - Connecting to the Flic Hub's IDE _does_ require your laptop and the Hub to be on the same network. So once you put the Hub on Cat5 only, you'll need to be on that network also.
  _Note:_ Use the phone app to get the Hub's IP address.
 
-- You can always connect the Hub to a Cat5 cable.
+- You can always connect the Hub to a Cat5 cable and ditch the WiFi.
 _Note:_ You can use the phone app for the Hub to _forget_ previously used WiFi networks and thus solely rely on the Cat5 connection.
 
 ![Flic Cat5 Only](./img/flic_cat5_only.png)
 
-- If a Hub is down for a while and the Flic2SMIP JavaScript module doesn't startup automatically, you'll have to help by connecting to the Flic Hub SDK / IDE and manually starting the module.
+- If a Hub is without power for a while and the Flic2SMIP JavaScript module doesn't startup automatically, you'll have to help by connecting to the Flic Hub SDK / IDE and manually starting the module.
