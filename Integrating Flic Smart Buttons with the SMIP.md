@@ -7,19 +7,29 @@ _Image 1: Countless industrial and manufacturing use cases exist besides smart h
 First use cases are limited to simply write a value at a time of a button press to a target attribute. Once we obtain an attribute's current value, however, a number of interesting use cases become possible:
 
 a) Simply write "1"
+
 	This would support apps such as an inspection walk. Simply place an appropriate number of buttons at points of interest, and when an inspector passes by the buttons are pressed to log time and sequence.
+
 b) Switch a Boolean On/Off
+
 	Switching on/off simply toggles a Boolean attribute. We can use this to control networked devices or to indicate simple alerts or states.
+
 c) Increase or Decrease Count
+
 	 You can think of the following setup: Single click to count up, double click to count down, _click&hold_ to reset to zero. An interesting use of smart buttons is simply to harvest timestamps. Combined with counts, this could make production time studies more efficient as it would reduce the need of manual note taking. That supervisor with a hand in their pockets: probably harvesting timestamps or busy counting.
+
 d) Toggle Enumeration Forwards/Backwards
+
 	If we target enumeration attributes we can use the list of enumeration values to iterate forward (single click) or backwards (double click). Finally, _click&hold_ would be used to submit a new status. 
 
 While the first use case would use "none" as interpolation method, the later three use cases would utilize "previous" as interpolation method.
 
 Finally, an exciting product that is not yet supported in the sdk is the Twist Button: it is a button with a turn dial around it. One would use _click&hold&dial_ to change an enumeration value and any of the simple click operations to submit a new state value. Either 4 or 12 dial values are supported. Flick buttons ship with a broad range of example stickers, and one could easily imagine appropriate manufacturing iconography to stick on the buttons.
+
 ### 3 Getting Technical: From Unpacking to Ready for Use
+
 #### 3.1 Getting Connected and Establishing Communication with the SMIP
+
 Control hubs and buttons are super easy to setup and manage using an app on a phone. The Flic team provides a range of api's and sdk's to support custom use cases. We used the web-based hub SDK to create a simple JavaScript module that runs on the hub and subscribes to button click events. First we created a FlicManager type on the SMIP and placed a single instance in our model tree. At this point the FlicManager is a simple type with a single json time series attribute to store messages. We used the SMIP's GraphQL API to:
 - obtain a JWT using an authenticator, 
 - obtain a target attribute id on the FlicManager instance, and
