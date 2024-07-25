@@ -298,7 +298,10 @@ function postMessage(obj) {
 				
 				// find battery status attribute and add to base query
 				var batteryAttrIndex = 0;
-				while(data.attributes[0].onObject.attributes[batteryAttrIndex].displayName != "Battery Status" && batteryAttrIndex < data.attributes[0].onObject.attributes.lenth){
+				while(
+					data.attributes[0].onObject.attributes[batteryAttrIndex].displayName != "Battery Status" && 
+					batteryAttrIndex < data.attributes[0].onObject.attributes.length
+				){
 					batteryAttrIndex++;
 				}
 				if(data.attributes[0].onObject.attributes[batteryAttrIndex].displayName == "Battery Status"){
