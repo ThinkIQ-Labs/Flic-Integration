@@ -1,12 +1,12 @@
 {
     "meta": {
         "file_version": "4.0.2",
-        "database_name": "services",
-        "export_timestamp": "2024-07-09T16:43:25.759684+00:00",
+        "database_name": "fullbore",
+        "export_timestamp": "2024-07-30T18:43:41.716711+00:00",
         "export_library_fqn": [
             "flic4smip_library"
         ],
-        "database_schema_version": "4.10.2"
+        "database_schema_version": "4.10.5"
     },
     "types": [
         {
@@ -30,7 +30,7 @@
                 "object"
             ],
             "access_group_ids": null,
-            "updated_timestamp": "2024-05-31T19:41:13.247892+00:00",
+            "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
             "unlink_relative_name": false
         },
         {
@@ -44,31 +44,34 @@
                 {
                     "icon": null,
                     "document": null,
-                    "data_type": "string",
+                    "data_type": "float",
                     "is_hidden": false,
-                    "max_value": null,
-                    "min_value": null,
+                    "max_value": 100,
+                    "min_value": 0,
                     "expression": null,
-                    "importance": 10,
-                    "description": "Name of the Button",
+                    "importance": 30,
+                    "description": "Time series attribute to store battery level harvested during click events.",
                     "edit_status": 1,
                     "is_required": false,
-                    "display_name": "Name",
+                    "display_name": "Battery Status",
                     "default_value": null,
-                    "relative_name": "name",
+                    "relative_name": "battery_status",
                     "decimal_places": 2,
-                    "source_category": "config",
+                    "source_category": "dynamic",
                     "attribute_limits": [],
-                    "updated_timestamp": "2024-07-04T20:01:03.144145+00:00",
+                    "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
                     "attribute_type_fqn": null,
                     "associated_event_ids": null,
                     "enumeration_type_fqn": null,
-                    "interpolation_method": "previous",
+                    "interpolation_method": "linear",
                     "unlink_relative_name": false,
                     "object_history_type_id": null,
                     "object_history_type_fqn": null,
                     "default_enumeration_values": null,
-                    "default_measurement_unit_fqn": null
+                    "default_measurement_unit_fqn": [
+                        "local_library",
+                        "%"
+                    ]
                 },
                 {
                     "icon": null,
@@ -88,7 +91,7 @@
                     "decimal_places": 2,
                     "source_category": "config",
                     "attribute_limits": [],
-                    "updated_timestamp": "2024-07-04T20:01:19.553007+00:00",
+                    "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
                     "attribute_type_fqn": null,
                     "associated_event_ids": null,
                     "enumeration_type_fqn": null,
@@ -102,34 +105,31 @@
                 {
                     "icon": null,
                     "document": null,
-                    "data_type": "float",
+                    "data_type": "string",
                     "is_hidden": false,
-                    "max_value": 100,
-                    "min_value": 0,
+                    "max_value": null,
+                    "min_value": null,
                     "expression": null,
-                    "importance": 30,
-                    "description": "Time series attribute to store battery level harvested during click events.",
+                    "importance": 10,
+                    "description": "Name of the Button",
                     "edit_status": 1,
                     "is_required": false,
-                    "display_name": "Battery Status",
+                    "display_name": "Name",
                     "default_value": null,
-                    "relative_name": "battery_status",
+                    "relative_name": "name",
                     "decimal_places": 2,
-                    "source_category": "dynamic",
+                    "source_category": "config",
                     "attribute_limits": [],
-                    "updated_timestamp": "2024-07-04T20:01:44.460169+00:00",
+                    "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
                     "attribute_type_fqn": null,
                     "associated_event_ids": null,
                     "enumeration_type_fqn": null,
-                    "interpolation_method": "linear",
+                    "interpolation_method": "previous",
                     "unlink_relative_name": false,
                     "object_history_type_id": null,
                     "object_history_type_fqn": null,
                     "default_enumeration_values": null,
-                    "default_measurement_unit_fqn": [
-                        "local_library",
-                        "%"
-                    ]
+                    "default_measurement_unit_fqn": null
                 }
             ],
             "importance": null,
@@ -145,16 +145,16 @@
                     "importance": null,
                     "max_number": 0,
                     "min_number": 0,
-                    "description": "Describes actions to be taken on Single Click events.",
+                    "description": "Describes actions to be taken on Click 'n Hold events.",
                     "edit_status": 1,
                     "is_required": true,
-                    "display_name": "Single Click Settings",
-                    "relative_name": "single_click_settings",
+                    "display_name": "Click and Hold Settings",
+                    "relative_name": "click_and_hold_settings",
                     "child_type_fqn": [
                         "local_library",
                         "flic_event_settings"
                     ],
-                    "updated_timestamp": "2024-07-04T20:42:30.23191+00:00"
+                    "updated_timestamp": "2024-07-09T18:05:49.057805+00:00"
                 },
                 {
                     "document": null,
@@ -170,23 +170,23 @@
                         "local_library",
                         "flic_event_settings"
                     ],
-                    "updated_timestamp": "2024-07-04T20:42:13.301122+00:00"
+                    "updated_timestamp": "2024-07-09T18:05:49.057805+00:00"
                 },
                 {
                     "document": null,
                     "importance": null,
                     "max_number": 0,
                     "min_number": 0,
-                    "description": "Describes actions to be taken on Click 'n Hold events.",
+                    "description": "Describes actions to be taken on Single Click events.",
                     "edit_status": 1,
                     "is_required": true,
-                    "display_name": "Click and Hold Settings",
-                    "relative_name": "click_and_hold_settings",
+                    "display_name": "Single Click Settings",
+                    "relative_name": "single_click_settings",
                     "child_type_fqn": [
                         "local_library",
                         "flic_event_settings"
                     ],
-                    "updated_timestamp": "2024-07-04T20:41:56.782469+00:00"
+                    "updated_timestamp": "2024-07-09T18:05:49.057805+00:00"
                 }
             ],
             "sub_type_of_fqn": [
@@ -194,7 +194,7 @@
                 "flic4smip"
             ],
             "access_group_ids": null,
-            "updated_timestamp": "2024-07-04T20:20:48.138817+00:00",
+            "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
             "unlink_relative_name": false
         },
         {
@@ -206,7 +206,7 @@
                 {
                     "run": false,
                     "owner": "gregorvilkner",
-                    "script": "<?php\r\n\r\nuse Joomla\\CMS\\HTML\\HTMLHelper;\r\n\r\nHTMLHelper::_('script', 'media\/com_thinkiq\/js\/dist\/tiq.core.js',            array('version' => 'auto', 'relative' => false));\r\n\/\/ HTMLHelper::_('script', 'media\/com_thinkiq\/js\/dist\/tiq.tiqGraphQL.js',      array('version' => 'auto', 'relative' => false));\r\nHTMLHelper::_('script', 'media\/com_thinkiq\/js\/dist\/tiq.components.min.js',  array('version' => 'auto', 'relative' => false));\r\n\/\/ HTMLHelper::_('script', 'media\/com_thinkiq\/js\/dist\/tiq.charts.min.js',      array('version' => 'auto', 'relative' => false));\r\n\r\nrequire_once 'thinkiq_context.php';\r\n$context = new Context();\r\n\r\nuse Joomla\\CMS\\Factory;\r\n$user = Factory::getUser();\r\n\r\n?>\r\n\r\n<div id=\"app\">\r\n\r\n    <div class=\"row\">            \r\n        <div class=\"col-12\">\r\n            <h1 class=\"pb-2 pt-2\" style=\"font-size:2.5rem; color:#126181;\">\r\n                {{pageTitle}}\r\n                <a v-if=\"true\" class=\"float-end btn btn-sm btn-link mt-2\" style=\"font-size:1rem; color:#126181;\" v-bind:href=\"`\/index.php?option=com_modeleditor&view=script&id=${context.std_inputs.script_id}`\" target=\"_blank\">source<\/a>\r\n            <\/h1>\r\n            <hr style=\"border-color:#126181; border-width:medium;\" \/>\r\n        <\/div>   \r\n    <\/div>\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-3\" v-for=\"aButton in buttons\">\r\n            <div class=\"card my-2\" style=\"width: 25rem; height: 550px;\" :style=\"aButton.events[0].i==1 ? 'background-color: aliceblue;' : ''\" >\r\n                <div class=\"card-body\">\r\n                    <h5 class=\"card-title\">{{aButton.name}}<\/h5>\r\n                    <p class=\"card-text\">{{aButton.bdaddr}}<\/p>\r\n                    <p class=\"card-text\">s-d-h: {{aButton.events.filter(x=>x.isSingleClick).length}}-{{aButton.events.filter(x=>x.isDoubleClick).length}}-{{aButton.events.filter(x=>x.isHold).length}}<\/p>\r\n                    <p class=\"card-text\">last click: {{aButton.events[0].ts.format('lll')}} (top {{aButton.events[0].i}})\r\n                    <div v-if=\"aButton.buttonMapping==null\">\r\n                        <button class=\"btn btn-secondary\" @click=\"AddButtonAsync(aButton)\"><i class=\"fa-regular fa-layer-plus me-2\"><\/i>add mapping<\/button>\r\n                    <\/div>\r\n                    <div v-else>\r\n                        <div v-for=\"aMapping in aButton.buttonMapping.mappings.sort((a,b)=> a.attributes.find(x=>x.displayName=='Click Event Type').enumerationName < b.attributes.find(x=>x.displayName=='Click Event Type').enumerationName ? 1 : -1)\">\r\n                            <div style=\"background-color:lightgray;\" class=\"my-1 p-2\">\r\n                                <h5 class=\"card-title\">\r\n                                    {{aMapping.attributes.find(x=>x.displayName=='Click Event Type').enumerationName}}\r\n                                    <button class=\"btn btn-sm float-end\" @click=\"ResetMapping(aMapping)\" style=\"transform: translateY(-5px);\" data-toggle=\"tooltip\" title=\"Reset mapping: clears mode, value, and target.\">\r\n                                        <i>reset<\/i>\r\n                                    <\/button>\r\n                                <\/h5>\r\n                                <div class=\"my-2\">\r\n                                    <div class=\"input-group\">\r\n                                        <select class=\"form-select input-group-prepend\" v-model=\"aMapping.attributes.find(x=>x.displayName=='Flic Mode').enumerationValue\" data-toggle=\"tooltip\" title=\"Select Flic mode.\">\r\n                                            <option disabled value=\"\">Please select one<\/option>\r\n                                            <option v-for=\"(option, i) in aMapping.attributes.find(x=>x.displayName=='Flic Mode').enumerationType.enumerationNames\" :value=\"aMapping.attributes.find(x=>x.displayName=='Flic Mode').enumerationValues[i]\">\r\n                                                {{option}}\r\n                                            <\/option>\r\n                                        <\/select>\r\n                                        <input type=\"text\" class=\"form-control\" placeholder=\"\" v-model=\"aMapping.attributes.find(x=>x.displayName=='Argument').stringValue\" data-toggle=\"tooltip\" title=\"Value to apply.\">\r\n                                    <\/div>\r\n                                <\/div>\r\n                                <div class=\"my-2\">\r\n                                    <span data-toggle=\"tooltip\" title=\"Pick target attribute.\"><tree-picker class=\"my-2\"\r\n                                        :picker-name='`mapping_target_${aMapping.id}`'\r\n                                        display-mode='instance'\r\n                                        content='Select a target attribute'\r\n                                        :height='500'\r\n                                        default-expand-levels='0'\r\n                                        :default-root-node-fqn='null'\r\n                                        :default-root-node-id='null'\r\n                                        :prune-branches='false'\r\n                                        :branch-types='[\"organization\",\"place,equipment\",\"gateway\",\"connector\",\"opcua_object\",\"object\",\"material\",\"person\",\"attribute\"]'\r\n                                        :leaf-types='[\"attribute\",\"tag\"]'\r\n                                        @on-select=\"(selectedNode)=>{selectedValue=selectedNode; OnTargetSelectAsync(aMapping);}\"\r\n                                    ><\/tree-picker><\/span>\r\n                                    Target\r\n                                    <span v-if=\"aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute!=null\">\r\n                                        : <i>\"{{aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute.displayName}}\"<\/i>\r\n                                    <\/span>\r\n\r\n                                    <button class=\"btn btn-sm btn-info float-end\" @click=\"SaveMappingAsync(aMapping)\" data-toggle=\"tooltip\" title=\"Save setting configuration.\">\r\n                                        <i class=\"fa-regular fa-floppy-disk fa-lg\" style=\"color:tiq-primary;\"><\/i>\r\n                                    <\/button>\r\n\r\n                                <\/div>\r\n                            <\/div>\r\n                        <\/div>\r\n                        <div>\r\n                            <button class=\"btn btn-secondary float-end\" @click=\"RemoveButtonAsync(aButton)\"><i class=\"fa-solid fa-trash-xmark me-2\"><\/i>remove mapping<\/button>\r\n                        <\/div>\r\n                    <\/div>\r\n                <\/div>\r\n            <\/div>\r\n        <\/div>\r\n    <\/div>\r\n\r\n\r\n<\/div>\r\n\r\n<script>\r\n    var WinDoc = window.document;\r\n    \r\n    var app = createApp({\r\n        \/\/ el: \"#app\",\r\n        data() {\r\n            return {\r\n                moment: moment,\r\n                pageTitle: \"Manage Flic Buttons and Events\",\r\n                context:<?php echo json_encode($context)?>,\r\n                user:<?php echo json_encode($user)?>,\r\n                buttons: [],\r\n                flicManagerId: 0,\r\n                flicButtonTypeId: 0,\r\n                selectedValue: null\r\n            }\r\n        },\r\n        mounted: async function () {\r\n            WinDoc.title = this.pageTitle;\r\n            await this.GetFlicEventsAsync();\r\n            await this.GetFlicButtonsAsync();\r\n        },\r\n        methods: {\r\n            ResetMapping: function(aMapping){\r\n                aMapping.attributes.find(x=>x.displayName=='Target').referencedNodeId = null;\r\n                aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute = null;\r\n\r\n                aMapping.attributes.find(x=>x.displayName=='Argument').stringValue = null;\r\n\r\n                aMapping.attributes.find(x=>x.displayName=='Flic Mode').enumerationValue = null;\r\n                aMapping.attributes.find(x=>x.displayName=='Flic Mode').enumerationName = null;\r\n            },\r\n            SaveMappingAsync: async function(aMapping){\r\n                let query = `\r\n                    mutation m1 {\r\n                        m1: updateAttribute(input: { id: \"${aMapping.attributes.find(x=>x.displayName=='Target').id}\", patch: { referencedNodeId: \"${aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute.id}\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        m2: updateAttribute(input: { id: \"${aMapping.attributes.find(x=>x.displayName=='Argument').id}\", patch: { stringValue: \"${aMapping.attributes.find(x=>x.displayName=='Argument').stringValue}\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        m3: updateAttribute(input: { id: \"${aMapping.attributes.find(x=>x.displayName=='Flic Mode').id}\", patch: { enumerationValue: \"${aMapping.attributes.find(x=>x.displayName=='Flic Mode').enumerationValue}\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                    }\r\n                `;\r\n                let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n\r\n            },\r\n            OnTargetSelectAsync: async function(aMapping){\r\n                console.log(aMapping);\r\n                console.log(this.selectedValue);\r\n                \/\/ let query = `\r\n                \/\/     mutation m1 {\r\n                \/\/         m1: updateAttribute(input: { id: \"${aMapping.attributes.find(x=>x.displayName=='Target').id}\", patch: { referencedNodeId: \"${this.selectedValue.id}\" } }) {\r\n                \/\/             clientMutationId\r\n                \/\/         }\r\n                \/\/     }\r\n                \/\/ `;\r\n                \/\/ let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n\r\n                \/\/ await this.GetFlicButtonsAsync();\r\n                if(aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute == null){\r\n                    aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute = {};\r\n                }\r\n                aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute.id = this.selectedValue.id;\r\n                aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute.displayName = this.selectedValue.display_name;\r\n            },\r\n            RemoveButtonAsync: async function(aButton){\r\n                \r\n                let query = `\r\n                    mutation m1 {\r\n                        deleteObject(input:{ id:\"${aButton.buttonMapping.id}\"}) {\r\n                            clientMutationId\r\n                        }\r\n                    }\r\n                `;\r\n                let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n\r\n                await this.GetFlicButtonsAsync();\r\n\r\n            },\r\n\r\n            AddButtonAsync: async function(aButton){\r\n                \r\n                if(this.flicButtonTypeId==0){\r\n                    await this.GetFlicButtonTypeAsync();\r\n                }\r\n                \r\n                let query = `\r\n                    mutation m1 {\r\n                        createObject(\r\n                            input: {\r\n                                object: {\r\n                                    displayName: \"${aButton.name} (${aButton.bdaddr})\"\r\n                                    typeId: \"${this.flicButtonTypeId}\"\r\n                                    partOfId: \"${this.flicManagerId}\"\r\n                                }\r\n                            }\r\n                        ) {\r\n                            clientMutationId\r\n                            object {\r\n                                id\r\n                            }\r\n                        }\r\n                    }\r\n                `;\r\n                let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n\r\n                query = `\r\n                    query q1 {\r\n                        buttons: objects(condition: {id: \"${aResponse.data.createObject.object.id}\"}){\r\n                            id\r\n                            displayName\r\n                            attributes{\r\n                                id\r\n                                displayName\r\n                            }\r\n                            mappings: childObjects{\r\n                                id\r\n                                displayName\r\n                                attributes{\r\n                                    id\r\n                                    displayName\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n                `;\r\n                aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n\r\n                query = `\r\n                    mutation m1 {\r\n                        mutate_mac: updateAttribute(input: { id: \"${aResponse.data.buttons[0].attributes.find(x=>x.displayName==\"mac address\").id}\", patch: { stringValue: \"${aButton.bdaddr}\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_name: updateAttribute(input: { id: \"${aResponse.data.buttons[0].attributes.find(x=>x.displayName==\"Name\").id}\", patch: { stringValue: \"${aButton.name}\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_enum1: updateAttribute(input: { id: \"${aResponse.data.buttons[0].mappings.find(x=>x.displayName==\"Single Click Settings\").attributes.find(x=>x.displayName==\"Click Event Type\").id}\", patch: { enumerationValue: \"1\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_enum2: updateAttribute(input: { id: \"${aResponse.data.buttons[0].mappings.find(x=>x.displayName==\"Double Click Settings\").attributes.find(x=>x.displayName==\"Click Event Type\").id}\", patch: { enumerationValue: \"2\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_enum3: updateAttribute(input: { id: \"${aResponse.data.buttons[0].mappings.find(x=>x.displayName==\"Click and Hold Settings\").attributes.find(x=>x.displayName==\"Click Event Type\").id}\", patch: { enumerationValue: \"3\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_importance1: updateObject(input: { id: \"${aResponse.data.buttons[0].mappings.find(x=>x.displayName==\"Single Click Settings\").id}\", patch: { importance: 10 } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_importance2: updateObject(input: { id: \"${aResponse.data.buttons[0].mappings.find(x=>x.displayName==\"Double Click Settings\").id}\", patch: { importance: 20 } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_importance3: updateObject(input: { id: \"${aResponse.data.buttons[0].mappings.find(x=>x.displayName==\"Click and Hold Settings\").id}\", patch: { importance: 30 } }) {\r\n                            clientMutationId\r\n                        }\r\n                    }\r\n                `;\r\n                aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n\r\n                await this.GetFlicButtonsAsync();\r\n\r\n            },\r\n            GetFlicButtonTypeAsync: async function(){\r\n                let query = `\r\n                    query q1 {\r\n                        tiqTypes(condition: { displayName: \"Flic Button\" }) {\r\n                            id\r\n                        }\r\n                    }\r\n                `;\r\n                let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n                this.flicButtonTypeId = aResponse.data.tiqTypes[0].id;\r\n            },\r\n            GetFlicButtonsAsync: async function(){\r\n                let query = `\r\nquery q1 {\r\n  tiqTypes(condition: { displayName: \"Flic Receiver\" }) {\r\n    id\r\n    objectsByTypeId {\r\n      id\r\n      displayName\r\n      relativeName\r\n      buttons: childObjects {\r\n        id\r\n        displayName\r\n        relativeName\r\n        attributes {\r\n          id\r\n          displayName\r\n          relativeName\r\n          stringValue\r\n          currentValue {\r\n            timestamp\r\n            value\r\n          }\r\n        }\r\n        mappings: childObjects {\r\n          id\r\n          displayName\r\n          relativeName\r\n          attributes {\r\n            id\r\n            displayName\r\n            relativeName\r\n            stringValue\r\n            enumerationValue\r\n            enumerationName\r\n            enumerationValues\r\n            enumerationType {\r\n              enumerationNames\r\n            }\r\n            referencedAttribute {\r\n              id\r\n              displayName\r\n              relativeName\r\n              dataType\r\n              enumerationValue\r\n              enumerationName\r\n              enumerationType {\r\n                enumerationNames\r\n              }\r\n              currentValue {\r\n                timestamp\r\n                value\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n                `;\r\n\r\n                let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n                let buttons = aResponse.data.tiqTypes[0].objectsByTypeId[0].buttons;\r\n                this.buttons.forEach(aButton=>{\r\n                    aButton.buttonMapping=null;\r\n                });\r\n                buttons.forEach(aButton => {\r\n                    let aPairedButton = this.buttons.find(x=>x.bdaddr==aButton.attributes.find(x=>x.displayName==\"mac address\").stringValue);\r\n                    if(aPairedButton){\r\n                        aPairedButton.buttonMapping = aButton;\r\n                    }\r\n                });\r\n            },\r\n            GetFlicEventsAsync: async function () {\r\n                let startDate = moment().add(-10,'day');\r\n                let endDate = moment();\r\n                let query = `\r\n                    query q1 {\r\n                        tiqTypes(condition: { displayName: \"Flic Receiver\" }) {\r\n                            id\r\n                            objectsByTypeId {\r\n                                id\r\n                                displayName\r\n                                attributes {\r\n                                    id\r\n                                    displayName\r\n                                    getTimeSeries(startTime: \"${startDate.toISOString()}\", endTime: \"${endDate.toISOString()}\") {\r\n                                        ts\r\n                                        objectvalue\r\n                                    }\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n                `;\r\n\r\n                let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n                this.flicManagerId = aResponse.data.tiqTypes[0].objectsByTypeId[0].id;\r\n                let events = aResponse.data.tiqTypes[0].objectsByTypeId[0].attributes[0].getTimeSeries.reverse();\r\n                let buttons = [];\r\n                events.forEach((aEvent,i) => {\r\n                    let aFlicMessage = JSON.parse(aEvent.objectvalue);\r\n                    if(!buttons.find(x=>x.bdaddr == aFlicMessage.bdaddr)){\r\n                        aFlicMessage.button.events=[];\r\n                        aFlicMessage.button.mapping = null;\r\n                        buttons.push(aFlicMessage.button)\r\n                    }\r\n                    let aButton = buttons.find(x=>x.bdaddr==aFlicMessage.bdaddr);\r\n                    let aButtonPressEvent = JSON.parse(aEvent.objectvalue);\r\n                    aButtonPressEvent.ts = moment(aEvent.ts);\r\n                    aButtonPressEvent.i = i+1;\r\n                    delete aButtonPressEvent.button;\r\n                    aButton.events.push(aButtonPressEvent);\r\n                });\r\n                this.buttons = buttons.sort((a,b)=>a.name>b.name?1:-1);\r\n            }\r\n        },\r\n    })\r\n    .mount('#app');\r\n<\/script>",
+                    "script": "<?php\r\n\r\nuse Joomla\\CMS\\HTML\\HTMLHelper;\r\n\r\nHTMLHelper::_('script', 'media\/com_thinkiq\/js\/dist\/tiq.core.js',            array('version' => 'auto', 'relative' => false));\r\n\/\/ HTMLHelper::_('script', 'media\/com_thinkiq\/js\/dist\/tiq.tiqGraphQL.js',      array('version' => 'auto', 'relative' => false));\r\nHTMLHelper::_('script', 'media\/com_thinkiq\/js\/dist\/tiq.components.min.js',  array('version' => 'auto', 'relative' => false));\r\n\/\/ HTMLHelper::_('script', 'media\/com_thinkiq\/js\/dist\/tiq.charts.min.js',      array('version' => 'auto', 'relative' => false));\r\n\r\nrequire_once 'thinkiq_context.php';\r\n$context = new Context();\r\n\r\nuse Joomla\\CMS\\Factory;\r\n$user = Factory::getUser();\r\n\r\n?>\r\n\r\n<div id=\"app\">\r\n\r\n    <div class=\"row\">            \r\n        <div class=\"col-12\">\r\n            <h1 class=\"pb-2 pt-2\" style=\"font-size:2.5rem; color:#126181;\">\r\n                {{pageTitle}}\r\n                <a v-if=\"true\" class=\"float-end btn btn-sm btn-link mt-2\" style=\"font-size:1rem; color:#126181;\" v-bind:href=\"`\/index.php?option=com_modeleditor&view=script&id=${context.std_inputs.script_id}`\" target=\"_blank\">source<\/a>\r\n            <\/h1>\r\n            <hr style=\"border-color:#126181; border-width:medium;\" \/>\r\n        <\/div>   \r\n    <\/div>\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-3\" v-for=\"aButton in buttons\">\r\n            <div class=\"card my-2\" style=\"width: 25rem; height: 550px;\" :style=\"aButton.events[0].i==1 ? 'background-color: aliceblue;' : ''\" >\r\n                <div class=\"card-body\">\r\n                    <h5 class=\"card-title\">{{aButton.name}}<\/h5>\r\n                    <p class=\"card-text\">{{aButton.bdaddr}}<\/p>\r\n                    <p class=\"card-text\">s-d-h: {{aButton.events.filter(x=>x.isSingleClick).length}}-{{aButton.events.filter(x=>x.isDoubleClick).length}}-{{aButton.events.filter(x=>x.isHold).length}}<\/p>\r\n                    <p class=\"card-text\">last click: {{aButton.events[0].ts.format('lll')}} (top {{aButton.events[0].i}})\r\n                    <div v-if=\"aButton.buttonMapping==null\">\r\n                        <button class=\"btn btn-secondary\" @click=\"AddButtonAsync(aButton)\"><i class=\"fa-regular fa-layer-plus me-2\"><\/i>add mapping<\/button>\r\n                    <\/div>\r\n                    <div v-else>\r\n                        <div v-for=\"aMapping in aButton.buttonMapping.mappings.sort((a,b)=> a.attributes.find(x=>x.displayName=='Click Event Type').enumerationName < b.attributes.find(x=>x.displayName=='Click Event Type').enumerationName ? 1 : -1)\">\r\n                            <div style=\"background-color:lightgray;\" class=\"my-1 p-2\">\r\n                                <h5 class=\"card-title\">\r\n                                    {{aMapping.attributes.find(x=>x.displayName=='Click Event Type').enumerationName}}\r\n                                    <button class=\"btn btn-sm float-end\" @click=\"ResetMapping(aMapping)\" style=\"transform: translateY(-5px);\" data-toggle=\"tooltip\" title=\"Reset mapping: clears mode, value, and target.\">\r\n                                        <i>reset<\/i>\r\n                                    <\/button>\r\n                                <\/h5>\r\n                                <div class=\"my-2\">\r\n                                    <div class=\"input-group\">\r\n                                        <select class=\"form-select input-group-prepend\" v-model=\"aMapping.attributes.find(x=>x.displayName=='Flic Mode').enumerationValue\" data-toggle=\"tooltip\" title=\"Select Flic mode.\">\r\n                                            <option disabled value=\"\">Please select one<\/option>\r\n                                            <option v-for=\"(option, i) in aMapping.attributes.find(x=>x.displayName=='Flic Mode').enumerationType.enumerationNames\" :value=\"aMapping.attributes.find(x=>x.displayName=='Flic Mode').enumerationValues[i]\">\r\n                                                {{option}}\r\n                                            <\/option>\r\n                                        <\/select>\r\n                                        <input type=\"text\" class=\"form-control\" placeholder=\"\" v-model=\"aMapping.attributes.find(x=>x.displayName=='Argument').stringValue\" data-toggle=\"tooltip\" title=\"Value to apply.\">\r\n                                    <\/div>\r\n                                <\/div>\r\n                                <div class=\"my-2\">\r\n                                    <span data-toggle=\"tooltip\" title=\"Pick target attribute.\"><tree-picker class=\"my-2\"\r\n                                        :picker-name='`mapping_target_${aMapping.id}`'\r\n                                        display-mode='instance'\r\n                                        content='Select a target attribute'\r\n                                        :height='500'\r\n                                        default-expand-levels='0'\r\n                                        :default-root-node-fqn='null'\r\n                                        :default-root-node-id='null'\r\n                                        :prune-branches='false'\r\n                                        :branch-types='[\"organization\",\"place,equipment\",\"gateway\",\"connector\",\"opcua_object\",\"object\",\"material\",\"person\",\"attribute\"]'\r\n                                        :leaf-types='[\"attribute\",\"tag\"]'\r\n                                        @on-select=\"(selectedNode)=>{selectedValue=selectedNode; OnTargetSelectAsync(aMapping);}\"\r\n                                    ><\/tree-picker><\/span>\r\n                                    Target\r\n                                    <span v-if=\"aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute!=null\">\r\n                                        : <i>\"{{aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute.displayName}}\"<\/i>\r\n                                    <\/span>\r\n\r\n                                    <button class=\"btn btn-sm btn-info float-end\" @click=\"SaveMappingAsync(aMapping)\" data-toggle=\"tooltip\" title=\"Save setting configuration.\">\r\n                                        <i class=\"fa-regular fa-floppy-disk fa-lg\" style=\"color:tiq-primary;\"><\/i>\r\n                                    <\/button>\r\n\r\n                                <\/div>\r\n                            <\/div>\r\n                        <\/div>\r\n                        <div>\r\n                            <button class=\"btn btn-secondary float-end\" @click=\"RemoveButtonAsync(aButton)\"><i class=\"fa-solid fa-trash-xmark me-2\"><\/i>remove mapping<\/button>\r\n                        <\/div>\r\n                    <\/div>\r\n                <\/div>\r\n            <\/div>\r\n        <\/div>\r\n    <\/div>\r\n\r\n\r\n<\/div>\r\n\r\n<script>\r\n    var WinDoc = window.document;\r\n    \r\n    var app = createApp({\r\n        \/\/ el: \"#app\",\r\n        data() {\r\n            return {\r\n                moment: moment,\r\n                pageTitle: \"Manage Flic Buttons and Events\",\r\n                context:<?php echo json_encode($context)?>,\r\n                user:<?php echo json_encode($user)?>,\r\n                buttons: [],\r\n                flicManagerId: 0,\r\n                flicButtonTypeId: 0,\r\n                selectedValue: null\r\n            }\r\n        },\r\n        mounted: async function () {\r\n            WinDoc.title = this.pageTitle;\r\n            await this.GetFlicEventsAsync();\r\n            await this.GetFlicButtonsAsync();\r\n        },\r\n        methods: {\r\n            ResetMapping: function(aMapping){\r\n                aMapping.attributes.find(x=>x.displayName=='Target').referencedNodeId = null;\r\n                aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute = null;\r\n\r\n                aMapping.attributes.find(x=>x.displayName=='Argument').stringValue = null;\r\n\r\n                aMapping.attributes.find(x=>x.displayName=='Flic Mode').enumerationValue = null;\r\n                aMapping.attributes.find(x=>x.displayName=='Flic Mode').enumerationName = null;\r\n            },\r\n            SaveMappingAsync: async function(aMapping){\r\n                let query = `\r\n                    mutation m1 {\r\n                        m1: updateAttribute(input: { id: \"${aMapping.attributes.find(x=>x.displayName=='Target').id}\", patch: { referencedNodeId: \"${aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute.id}\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        m2: updateAttribute(input: { id: \"${aMapping.attributes.find(x=>x.displayName=='Argument').id}\", patch: { stringValue: \"${aMapping.attributes.find(x=>x.displayName=='Argument').stringValue}\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        m3: updateAttribute(input: { id: \"${aMapping.attributes.find(x=>x.displayName=='Flic Mode').id}\", patch: { enumerationValue: \"${aMapping.attributes.find(x=>x.displayName=='Flic Mode').enumerationValue}\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                    }\r\n                `;\r\n                let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n\r\n            },\r\n            OnTargetSelectAsync: async function(aMapping){\r\n                console.log(aMapping);\r\n                console.log(this.selectedValue);\r\n                \/\/ let query = `\r\n                \/\/     mutation m1 {\r\n                \/\/         m1: updateAttribute(input: { id: \"${aMapping.attributes.find(x=>x.displayName=='Target').id}\", patch: { referencedNodeId: \"${this.selectedValue.id}\" } }) {\r\n                \/\/             clientMutationId\r\n                \/\/         }\r\n                \/\/     }\r\n                \/\/ `;\r\n                \/\/ let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n\r\n                \/\/ await this.GetFlicButtonsAsync();\r\n                if(aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute == null){\r\n                    aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute = {};\r\n                }\r\n                aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute.id = this.selectedValue.id;\r\n                aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute.displayName = this.selectedValue.display_name;\r\n            },\r\n            RemoveButtonAsync: async function(aButton){\r\n                \r\n                let query = `\r\n                    mutation m1 {\r\n                        deleteObject(input:{ id:\"${aButton.buttonMapping.id}\"}) {\r\n                            clientMutationId\r\n                        }\r\n                    }\r\n                `;\r\n                let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n\r\n                await this.GetFlicButtonsAsync();\r\n\r\n            },\r\n\r\n            AddButtonAsync: async function(aButton){\r\n                \r\n                if(this.flicButtonTypeId==0){\r\n                    await this.GetFlicButtonTypeAsync();\r\n                }\r\n                \r\n                let query = `\r\n                    mutation m1 {\r\n                        createObject(\r\n                            input: {\r\n                                object: {\r\n                                    displayName: \"${aButton.name} (${aButton.bdaddr})\"\r\n                                    typeId: \"${this.flicButtonTypeId}\"\r\n                                    partOfId: \"${this.flicManagerId}\"\r\n                                }\r\n                            }\r\n                        ) {\r\n                            clientMutationId\r\n                            object {\r\n                                id\r\n                            }\r\n                        }\r\n                    }\r\n                `;\r\n                let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n\r\n                query = `\r\n                    query q1 {\r\n                        buttons: objects(condition: {id: \"${aResponse.data.createObject.object.id}\"}){\r\n                            id\r\n                            displayName\r\n                            attributes{\r\n                                id\r\n                                displayName\r\n                            }\r\n                            mappings: childObjects{\r\n                                id\r\n                                displayName\r\n                                attributes{\r\n                                    id\r\n                                    displayName\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n                `;\r\n                aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n\r\n                query = `\r\n                    mutation m1 {\r\n                        mutate_mac: updateAttribute(input: { id: \"${aResponse.data.buttons[0].attributes.find(x=>x.displayName==\"mac address\").id}\", patch: { stringValue: \"${aButton.bdaddr}\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_name: updateAttribute(input: { id: \"${aResponse.data.buttons[0].attributes.find(x=>x.displayName==\"Name\").id}\", patch: { stringValue: \"${aButton.name}\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_enum1: updateAttribute(input: { id: \"${aResponse.data.buttons[0].mappings.find(x=>x.displayName==\"Single Click Settings\").attributes.find(x=>x.displayName==\"Click Event Type\").id}\", patch: { enumerationValue: \"1\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_enum2: updateAttribute(input: { id: \"${aResponse.data.buttons[0].mappings.find(x=>x.displayName==\"Double Click Settings\").attributes.find(x=>x.displayName==\"Click Event Type\").id}\", patch: { enumerationValue: \"2\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_enum3: updateAttribute(input: { id: \"${aResponse.data.buttons[0].mappings.find(x=>x.displayName==\"Click and Hold Settings\").attributes.find(x=>x.displayName==\"Click Event Type\").id}\", patch: { enumerationValue: \"3\" } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_importance1: updateObject(input: { id: \"${aResponse.data.buttons[0].mappings.find(x=>x.displayName==\"Single Click Settings\").id}\", patch: { importance: 10 } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_importance2: updateObject(input: { id: \"${aResponse.data.buttons[0].mappings.find(x=>x.displayName==\"Double Click Settings\").id}\", patch: { importance: 20 } }) {\r\n                            clientMutationId\r\n                        }\r\n                        mutate_importance3: updateObject(input: { id: \"${aResponse.data.buttons[0].mappings.find(x=>x.displayName==\"Click and Hold Settings\").id}\", patch: { importance: 30 } }) {\r\n                            clientMutationId\r\n                        }\r\n                    }\r\n                `;\r\n                aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n\r\n                await this.GetFlicButtonsAsync();\r\n\r\n            },\r\n            GetFlicButtonTypeAsync: async function(){\r\n                let query = `\r\n                    query q1 {\r\n                        tiqTypes(condition: { displayName: \"Flic Button\" }) {\r\n                            id\r\n                        }\r\n                    }\r\n                `;\r\n                let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n                this.flicButtonTypeId = aResponse.data.tiqTypes[0].id;\r\n            },\r\n            GetFlicButtonsAsync: async function(){\r\n                let query = `\r\nquery q1 {\r\n  tiqTypes(condition: { displayName: \"Flic Receiver\" }) {\r\n    id\r\n    objectsByTypeId {\r\n      id\r\n      displayName\r\n      relativeName\r\n      buttons: childObjects {\r\n        id\r\n        displayName\r\n        relativeName\r\n        attributes {\r\n          id\r\n          displayName\r\n          relativeName\r\n          stringValue\r\n          currentValue {\r\n            timestamp\r\n            value\r\n          }\r\n        }\r\n        mappings: childObjects {\r\n          id\r\n          displayName\r\n          relativeName\r\n          attributes {\r\n            id\r\n            displayName\r\n            relativeName\r\n            stringValue\r\n            enumerationValue\r\n            enumerationName\r\n            enumerationValues\r\n            enumerationType {\r\n              enumerationNames\r\n            }\r\n            referencedAttribute {\r\n              id\r\n              displayName\r\n              relativeName\r\n              dataType\r\n              enumerationValue\r\n              enumerationName\r\n              enumerationType {\r\n                enumerationNames\r\n              }\r\n              currentValue {\r\n                timestamp\r\n                value\r\n              }\r\n            }\r\n          }\r\n        }\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\n                `;\r\n\r\n                let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n                let buttons = aResponse.data.tiqTypes[0].objectsByTypeId[0].buttons;\r\n                this.buttons.forEach(aButton=>{\r\n                    aButton.buttonMapping=null;\r\n                });\r\n                for(let i=0; i<buttons.length; i++){\r\n                    const aButton = buttons[i];\r\n                    let aPairedButton = this.buttons.find(x=>x.bdaddr==aButton.attributes.find(x=>x.displayName==\"mac address\").stringValue);\r\n                    if(aPairedButton){\r\n                        \/\/ validate name has not changed\r\n                        if(aPairedButton.name != aButton.attributes.find(x=>x.displayName==\"Name\").stringValue){\r\n                            query = `\r\n                                mutation m1 {\r\n                                    mutate_displayName: updateObject(input: { id: \"${aButton.id}\", patch: { displayName: \"${aPairedButton.name} (${aPairedButton.bdaddr})\" } }) {\r\n                                        clientMutationId\r\n                                    }\r\n                                    mutate_name: updateAttribute(input: { id: \"${aButton.attributes.find(x=>x.displayName==\"Name\").id}\", patch: { stringValue: \"${aPairedButton.name}\" } }) {\r\n                                        clientMutationId\r\n                                    }\r\n\r\n                                }\r\n                            `;\r\n                            aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n\r\n                        }\r\n                        aPairedButton.buttonMapping = aButton;\r\n                    }\r\n                }\r\n            },\r\n            GetFlicEventsAsync: async function () {\r\n                let startDate = moment().add(-10,'day');\r\n                let endDate = moment();\r\n                let query = `\r\n                    query q1 {\r\n                        tiqTypes(condition: { displayName: \"Flic Receiver\" }) {\r\n                            id\r\n                            objectsByTypeId {\r\n                                id\r\n                                displayName\r\n                                attributes {\r\n                                    id\r\n                                    displayName\r\n                                    getTimeSeries(startTime: \"${startDate.toISOString()}\", endTime: \"${endDate.toISOString()}\") {\r\n                                        ts\r\n                                        objectvalue\r\n                                    }\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n                `;\r\n\r\n                let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);\r\n                this.flicManagerId = aResponse.data.tiqTypes[0].objectsByTypeId[0].id;\r\n                let events = aResponse.data.tiqTypes[0].objectsByTypeId[0].attributes[0].getTimeSeries.reverse();\r\n                let buttons = [];\r\n                events.forEach((aEvent,i) => {\r\n                    let aFlicMessage = JSON.parse(aEvent.objectvalue);\r\n                    if(!buttons.find(x=>x.bdaddr == aFlicMessage.bdaddr)){\r\n                        aFlicMessage.button.events=[];\r\n                        aFlicMessage.button.mapping = null;\r\n                        buttons.push(aFlicMessage.button)\r\n                    }\r\n                    let aButton = buttons.find(x=>x.bdaddr==aFlicMessage.bdaddr);\r\n                    let aButtonPressEvent = JSON.parse(aEvent.objectvalue);\r\n                    aButtonPressEvent.ts = moment(aEvent.ts);\r\n                    aButtonPressEvent.i = i+1;\r\n                    delete aButtonPressEvent.button;\r\n                    aButton.events.push(aButtonPressEvent);\r\n                });\r\n                this.buttons = buttons.sort((a,b)=>a.name>b.name?1:-1);\r\n            }\r\n        },\r\n    })\r\n    .mount('#app');\r\n<\/script>",
                     "document": {
                         "template": false
                     },
@@ -223,81 +223,9 @@
                     },
                     "cron_expression": "0 * * * * ? *",
                     "exec_on_derived": false,
-                    "updated_timestamp": "2024-07-06T20:13:24.497254+00:00",
+                    "updated_timestamp": "2024-07-30T18:37:14.769894+00:00",
                     "max_acceptable_run_secs": 0,
                     "use_outputs_from_last_run": true
-                },
-                {
-                    "run": true,
-                    "owner": "gregorvilkner",
-                    "script": "<?php\r\nuse TiqUtilities\\Model\\Node;\r\nuse TiqUtilities\\Model\\Attribute;\r\nuse TiqUtilities\\GraphQL\\GraphQL;\r\n\r\nclass FlicReceiver extends Node\r\n{\r\n\r\n    public $graphQlClient;\r\n\r\n    public $mappings;\r\n    public function GetMappings(){\r\n        if($this->mappings==null){\r\n            $aResponse = $this->graphQlClient->MakeRequest($this->MappingsQuery);\r\n            $this->mappings = $aResponse;\r\n        }\r\n        return $this->mappings;\r\n    }\r\n\r\n    public $mappingsCompact;\r\n    public function GetMappingsCompact(){\r\n        if($this->mappingsCompact==null){\r\n            $buttonMappings = $this->GetMappings()->data->tiqTypes[0]->objectsByTypeId[0]->childObjects;\r\n            $mappingsCompact = new stdClass();\r\n            foreach($buttonMappings as $i => $aButtonMapping){\r\n                $attributeDisplayNames = array_column($aButtonMapping->attributes, 'displayName');\r\n                \r\n                $includeMapping = false;\r\n                $aMappingCompact = new stdClass();\r\n                $aMappingCompact->singleClickMapping = null;\r\n                $aMappingCompact->doubleClickMapping = null;\r\n                $aMappingCompact->clickHoldMapping = null;\r\n\r\n                $aSingleClickMapping = $aButtonMapping->attributes[array_search('Single Click Target', $attributeDisplayNames)]->referencedAttribute;\r\n                if($aSingleClickMapping!=null){\r\n                    $includeMapping = true;\r\n                    $aMappingCompact->singleClickMapping = $aSingleClickMapping->id;\r\n                }\r\n\r\n                $aDoubleClickMapping = $aButtonMapping->attributes[array_search('Double Click Target', $attributeDisplayNames)]->referencedAttribute;\r\n                if($aDoubleClickMapping!=null){\r\n                    $includeMapping = true;\r\n                    $aMappingCompact->doubleClickMapping = $aDoubleClickMapping->id;\r\n                }\r\n\r\n                $aClickHoldMapping = $aButtonMapping->attributes[array_search('Click Hold Target', $attributeDisplayNames)]->referencedAttribute;\r\n                if($aClickHoldMapping!=null){\r\n                    $includeMapping = true;\r\n                    $aMappingCompact->clickHoldMapping = $aClickHoldMapping->id;\r\n                }\r\n\r\n                $aMappingCompact->batteryStatusMapping = $aButtonMapping->attributes[array_search('Battery Status', $attributeDisplayNames)]->id;\r\n\r\n                if($includeMapping){\r\n                    $aMacAddress = $aButtonMapping->attributes[array_search('mac address', $attributeDisplayNames)]->stringValue;\r\n                    $mappingsCompact->$aMacAddress = $aMappingCompact;\r\n                }\r\n            }\r\n            $this->mappingsCompact = $mappingsCompact;\r\n        }\r\n        return $this->mappingsCompact;\r\n    }\r\n\r\n    public function GetMessagesRaw($start_time = null, $end_time = null){\r\n        $data = $this->attributes['messages']->getTimeseries($start_time, $end_time);\r\n        return $data;\r\n    }\r\n\r\n    public function GetMessagesBySourceAndEventType($start_time = null, $end_time = null){\r\n        \r\n        $startTime = new DateTime($start_time);\r\n        $endTime = new DateTime($end_time);\r\n\r\n        $messages = $this->GetMessagesRaw($start_time, $end_time);\r\n\r\n        $messagesBySourceAndEventType = [];\r\n        foreach($messages['values'] as $i => $aMessage){\r\n            $aTimeStamp = new DateTime($messages['timestamps'][$i]);\r\n            if($aTimeStamp >= $startTime && $aTimeStamp <= $endTime){\r\n                $aMessageObj = json_decode($aMessage);\r\n                if(!array_key_exists($aMessageObj->bdaddr, $messagesBySourceAndEventType)){\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]=[];\r\n                    \r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['single'] = [];\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['single']['timestamps'] = [];\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['single']['values'] = [];\r\n                    \r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['double'] = [];\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['double']['timestamps'] = [];\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['double']['values'] = [];\r\n\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['hold'] = [];\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['hold']['timestamps'] = [];\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['hold']['values'] = [];\r\n\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['battery'] = [];\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['battery']['timestamps'] = [];\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['battery']['values'] = [];\r\n\r\n                }\r\n                if($aMessageObj->isSingleClick){\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['single']['timestamps'][] = $messages['timestamps'][$i];\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['single']['values'][] = 1;\r\n                }\r\n                if($aMessageObj->isDoubleClick){\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['double']['timestamps'][] = $messages['timestamps'][$i];\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['double']['values'][] = 1;\r\n                }\r\n                if($aMessageObj->isHold){\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['hold']['timestamps'][] = $messages['timestamps'][$i];\r\n                    $messagesBySourceAndEventType[$aMessageObj->bdaddr]['hold']['values'][] = 1;\r\n                }\r\n\r\n                $messagesBySourceAndEventType[$aMessageObj->bdaddr]['battery']['timestamps'][] = $messages['timestamps'][$i];\r\n                $messagesBySourceAndEventType[$aMessageObj->bdaddr]['battery']['values'][] = $aMessageObj->button->batteryStatus;\r\n            }\r\n        }\r\n\r\n        return $messagesBySourceAndEventType;\r\n\r\n    }\r\n\r\n    public function __construct($identifier = null, array $config = [])\r\n\t{\r\n\t\tparent::__construct($identifier, $config);\r\n\t\t$this->getAttributes(lazy_load:true);\r\n        $this->graphQlClient = new GraphQL();\r\n\t}\r\n\r\n    public $MappingsQuery = '\r\n        query q1 {\r\n            tiqTypes(condition: { displayName: \"FlicReceiver\" }) {\r\n                id\r\n                objectsByTypeId {\r\n                    id\r\n                    displayName\r\n                    relativeName\r\n                    childObjects {\r\n                        id\r\n                        displayName\r\n                        relativeName\r\n                        attributes {\r\n                            id\r\n                            displayName\r\n                            relativeName\r\n                            stringValue\r\n                            referencedAttribute {\r\n                                id\r\n                                displayName\r\n                                currentValue{\r\n                                    timestamp\r\n                                    value\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n        }\r\n    ';\r\n\r\n\r\n    public function updateData($start_time = null, $end_time = null)\r\n\t{\r\n        $messagesBySourceAndEventType = $this->GetMessagesBySourceAndEventType($start_time, $end_time);\r\n\r\n        if(count($messagesBySourceAndEventType) == 0) return;\r\n\r\n        $mappingsCompact = $this->GetMappingsCompact();\r\n        foreach($mappingsCompact as $aBdaddr => $aButtonMapping) {\r\n\r\n            if($aButtonMapping->singleClickMapping!=null && array_key_exists($aBdaddr, $messagesBySourceAndEventType)){\r\n                if(count($messagesBySourceAndEventType[$aBdaddr]['single']['values'])>0){\r\n                    $aTargetAttribute = new Attribute($aButtonMapping->singleClickMapping);\r\n                    \/\/ $aTargetAttribute->insertTimeseries($messagesBySourceAndEventType[$aBdaddr]['single']['values'], $messagesBySourceAndEventType[$aBdaddr]['single']['timestamps']);\r\n                }\r\n            }\r\n\r\n            if($aButtonMapping->doubleClickMapping!=null && array_key_exists($aBdaddr, $messagesBySourceAndEventType)){ \r\n                if(count($messagesBySourceAndEventType[$aBdaddr]['double']['values'])>0){\r\n                    $aTargetAttribute = new Attribute($aButtonMapping->doubleClickMapping);\r\n                    \/\/ $aTargetAttribute->insertTimeseries($messagesBySourceAndEventType[$aBdaddr]['double']['values'], $messagesBySourceAndEventType[$aBdaddr]['double']['timestamps']);\r\n                }\r\n            }\r\n\r\n            if($aButtonMapping->clickHoldMapping!=null && array_key_exists($aBdaddr, $messagesBySourceAndEventType)){ \r\n                if(count($messagesBySourceAndEventType[$aBdaddr]['hold']['values'])>0){\r\n                    $aTargetAttribute = new Attribute($aButtonMapping->clickHoldMapping);\r\n                    \/\/ $aTargetAttribute->insertTimeseries($messagesBySourceAndEventType[$aBdaddr]['hold']['values'], $messagesBySourceAndEventType[$aBdaddr]['hold']['timestamps']);\r\n                }\r\n            }\r\n\r\n            if(array_key_exists($aBdaddr, $messagesBySourceAndEventType)){ \r\n                if(count($messagesBySourceAndEventType[$aBdaddr]['battery']['values'])>0){\r\n                    $aBatteryStatusAttribute = new Attribute($aButtonMapping->batteryStatusMapping);\r\n                    $aBatteryStatusAttribute->insertTimeseries($messagesBySourceAndEventType[$aBdaddr]['battery']['values'], $messagesBySourceAndEventType[$aBdaddr]['battery']['timestamps']);\r\n                }\r\n            }\r\n            \r\n        }\r\n\r\n    }\r\n}",
-                    "document": {
-                        "template": false
-                    },
-                    "importance": null,
-                    "description": null,
-                    "edit_status": 1,
-                    "output_type": "class",
-                    "script_type": "php",
-                    "display_name": "FlicClassScript",
-                    "relative_name": "flicclassscript",
-                    "initial_inputs": {
-                        "start_timestamp": "2024-06-04T13:59:14.000+00:00",
-                        "interval_seconds": "60"
-                    },
-                    "cron_expression": "0 * * * * ? *",
-                    "exec_on_derived": false,
-                    "updated_timestamp": "2024-06-06T13:34:48.6643+00:00",
-                    "max_acceptable_run_secs": 0,
-                    "use_outputs_from_last_run": false
-                },
-                {
-                    "run": false,
-                    "owner": "gregorvilkner",
-                    "script": "<?php\r\n\r\nrequire_once 'load_cms.php';\r\n\r\nrequire_once 'thinkiq_context.php';\r\n$context = new Context();\r\n\r\nif (!defined('JPATH_BASE')) define('JPATH_BASE', dirname(__DIR__));\r\n\r\nrequire_once JPATH_BASE . '\/components\/com_thinkiq\/config.php';\r\n$config = new TiqConfig();\r\n\/\/echo \"running on: \" . $context->std_inputs->node_id;\r\n\r\n\/\/ Create an instance of the Motor on which this script is currently operating (it's a Script on a Type so it can operate on many instances of that Type)\r\nuse \\TiqUtilities\\Model\\Node;\r\n$flicReceiver = Node::getInstance($context->std_inputs->node_id);\r\n\/\/ var_dump($flicReceiver->GetMappings());\r\n\r\n\/\/ use relative timespan\r\n$start_time = (new DateTime())->sub(DateInterval::createFromDateString('0 week 0 days 0 hours 5 mins'))->format(DateTimeInterface::RFC3339_EXTENDED);\r\n$end_time = (new DateTime())->sub(DateInterval::createFromDateString('0 week 0 days 0 hours -1 mins'))->format(DateTimeInterface::RFC3339_EXTENDED);\r\n\r\n\/\/ use absolute timespan\r\n\/\/ $start_time = (new DateTime(\"2024-01-22T08:00:00-05:00\"))->format(DateTimeInterface::RFC3339_EXTENDED);\r\n\/\/ $end_time = (new DateTime(  \"2024-01-22T20:00:00-05:00\"))->format(DateTimeInterface::RFC3339_EXTENDED);\r\n\r\n$flicReceiver->updateData($start_time, $end_time);\r\n\r\n\r\n\r\n\r\n$context->return_data();",
-                    "document": {
-                        "template": false
-                    },
-                    "importance": null,
-                    "description": null,
-                    "edit_status": 1,
-                    "output_type": "headless",
-                    "script_type": "php",
-                    "display_name": "FlicMediator",
-                    "relative_name": "flicmediator",
-                    "initial_inputs": {
-                        "start_timestamp": "2024-06-04T13:58:16.000+00:00",
-                        "interval_seconds": "60"
-                    },
-                    "cron_expression": "0 * * * * ? *",
-                    "exec_on_derived": false,
-                    "updated_timestamp": "2024-06-06T13:15:42.584056+00:00",
-                    "max_acceptable_run_secs": 0,
-                    "use_outputs_from_last_run": false
-                },
-                {
-                    "run": false,
-                    "owner": "gregorvilkner",
-                    "script": "<?php\r\n\r\nrequire_once 'load_cms.php';\r\n\r\nrequire_once 'thinkiq_context.php';\r\n$context = new Context();\r\n\r\nif (!defined('JPATH_BASE')) define('JPATH_BASE', dirname(__DIR__));\r\n\r\nrequire_once JPATH_BASE . '\/components\/com_thinkiq\/config.php';\r\n$config = new TiqConfig();\r\n\/\/echo \"running on: \" . $context->std_inputs->node_id;\r\n\r\n\/\/ Create an instance of the Motor on which this script is currently operating (it's a Script on a Type so it can operate on many instances of that Type)\r\nuse \\TiqUtilities\\Model\\Node;\r\n$flicReceiver = Node::getInstance($context->std_inputs->node_id);\r\n\/\/ var_dump($flicReceiver->GetMappings());\r\n\r\n\/\/ use relative timespan\r\n$start_time = (new DateTime())->sub(DateInterval::createFromDateString('0 week 0 days 0 hours 15 mins'))->format(DateTimeInterface::RFC3339_EXTENDED);\r\n$end_time = (new DateTime())->sub(DateInterval::createFromDateString('0 week 0 days 0 hours -1 mins'))->format(DateTimeInterface::RFC3339_EXTENDED);\r\n\r\n\/\/ use absolute timespan\r\n\/\/ $start_time = (new DateTime(\"2024-01-22T08:00:00-05:00\"))->format(DateTimeInterface::RFC3339_EXTENDED);\r\n\/\/ $end_time = (new DateTime(  \"2024-01-22T20:00:00-05:00\"))->format(DateTimeInterface::RFC3339_EXTENDED);\r\n\/\/ $messages = $flicReceiver->GetMessagesBySourceAndEventType($start_time, $end_time);\r\n\/\/ var_dump($messages);\r\n\/\/ die;\r\n\/\/ var_dump($flicReceiver->GetMappings()); die;\r\n\/\/ var_dump($flicReceiver->GetMappingsCompact()); die;\r\n$flicReceiver->updateData($start_time, $end_time);\r\n\r\n\r\n$context->return_data();",
-                    "document": {
-                        "template": false
-                    },
-                    "importance": null,
-                    "description": null,
-                    "edit_status": 1,
-                    "output_type": "headless",
-                    "script_type": "php",
-                    "display_name": "Test FlicClassScript",
-                    "relative_name": "test_flicclassscript",
-                    "initial_inputs": {
-                        "start_timestamp": "2024-06-04T16:20:10.000+00:00",
-                        "interval_seconds": "60"
-                    },
-                    "cron_expression": "0 * * * * ? *",
-                    "exec_on_derived": false,
-                    "updated_timestamp": "2024-06-04T20:03:30.254529+00:00",
-                    "max_acceptable_run_secs": 0,
-                    "use_outputs_from_last_run": false
                 }
             ],
             "document": null,
@@ -320,7 +248,7 @@
                     "decimal_places": 2,
                     "source_category": "dynamic",
                     "attribute_limits": [],
-                    "updated_timestamp": "2024-05-31T19:42:02.295124+00:00",
+                    "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
                     "attribute_type_fqn": null,
                     "associated_event_ids": null,
                     "enumeration_type_fqn": null,
@@ -345,7 +273,7 @@
                 "flic4smip"
             ],
             "access_group_ids": null,
-            "updated_timestamp": "2024-07-04T20:21:31.088771+00:00",
+            "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
             "unlink_relative_name": false
         },
         {
@@ -356,6 +284,35 @@
             "scripts": [],
             "document": null,
             "attributes": [
+                {
+                    "icon": null,
+                    "document": null,
+                    "data_type": "string",
+                    "is_hidden": false,
+                    "max_value": null,
+                    "min_value": null,
+                    "expression": null,
+                    "importance": 30,
+                    "description": "What to write (true, 1, 0, ...), or what to add (1, -1).",
+                    "edit_status": 1,
+                    "is_required": false,
+                    "display_name": "Argument",
+                    "default_value": null,
+                    "relative_name": "argument",
+                    "decimal_places": 2,
+                    "source_category": "config",
+                    "attribute_limits": [],
+                    "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
+                    "attribute_type_fqn": null,
+                    "associated_event_ids": null,
+                    "enumeration_type_fqn": null,
+                    "interpolation_method": "previous",
+                    "unlink_relative_name": false,
+                    "object_history_type_id": null,
+                    "object_history_type_fqn": null,
+                    "default_enumeration_values": null,
+                    "default_measurement_unit_fqn": null
+                },
                 {
                     "icon": null,
                     "document": null,
@@ -374,7 +331,7 @@
                     "decimal_places": 2,
                     "source_category": "config",
                     "attribute_limits": [],
-                    "updated_timestamp": "2024-07-04T20:38:25.064949+00:00",
+                    "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
                     "attribute_type_fqn": null,
                     "associated_event_ids": null,
                     "enumeration_type_fqn": [
@@ -410,7 +367,7 @@
                     "decimal_places": 2,
                     "source_category": "config",
                     "attribute_limits": [],
-                    "updated_timestamp": "2024-07-04T20:38:48.235123+00:00",
+                    "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
                     "attribute_type_fqn": null,
                     "associated_event_ids": null,
                     "enumeration_type_fqn": [
@@ -431,35 +388,6 @@
                 {
                     "icon": null,
                     "document": null,
-                    "data_type": "string",
-                    "is_hidden": false,
-                    "max_value": null,
-                    "min_value": null,
-                    "expression": null,
-                    "importance": 30,
-                    "description": "What to write (true, 1, 0, ...), or what to add (1, -1).",
-                    "edit_status": 1,
-                    "is_required": false,
-                    "display_name": "Argument",
-                    "default_value": null,
-                    "relative_name": "argument",
-                    "decimal_places": 2,
-                    "source_category": "config",
-                    "attribute_limits": [],
-                    "updated_timestamp": "2024-07-04T20:39:27.56955+00:00",
-                    "attribute_type_fqn": null,
-                    "associated_event_ids": null,
-                    "enumeration_type_fqn": null,
-                    "interpolation_method": "previous",
-                    "unlink_relative_name": false,
-                    "object_history_type_id": null,
-                    "object_history_type_fqn": null,
-                    "default_enumeration_values": null,
-                    "default_measurement_unit_fqn": null
-                },
-                {
-                    "icon": null,
-                    "document": null,
                     "data_type": "reference",
                     "is_hidden": false,
                     "max_value": null,
@@ -475,7 +403,7 @@
                     "decimal_places": 2,
                     "source_category": "config",
                     "attribute_limits": [],
-                    "updated_timestamp": "2024-07-04T20:39:37.406257+00:00",
+                    "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
                     "attribute_type_fqn": null,
                     "associated_event_ids": null,
                     "enumeration_type_fqn": null,
@@ -500,7 +428,7 @@
                 "flic4smip"
             ],
             "access_group_ids": null,
-            "updated_timestamp": "2024-07-04T20:21:04.850148+00:00",
+            "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
             "unlink_relative_name": false
         },
         {
@@ -521,7 +449,7 @@
             "child_equipment": [],
             "sub_type_of_fqn": null,
             "access_group_ids": null,
-            "updated_timestamp": "2023-03-21T22:43:16.106701+00:00",
+            "updated_timestamp": "2023-03-21T22:43:15.717698+00:00",
             "unlink_relative_name": false
         }
     ],
@@ -545,7 +473,7 @@
             "display_name": "Flic4Smip Library",
             "relative_name": "flic4smip_library",
             "namespace_uris": null,
-            "updated_timestamp": "2024-05-31T19:40:38.136445+00:00",
+            "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
             "unlink_relative_name": false
         },
         {
@@ -566,7 +494,7 @@
             "display_name": "Local Library",
             "relative_name": "local_library",
             "namespace_uris": null,
-            "updated_timestamp": "2024-06-11T20:34:34.24817+00:00",
+            "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
             "unlink_relative_name": false
         },
         {
@@ -587,7 +515,7 @@
             "display_name": "ThinkIQ Base Library",
             "relative_name": "thinkiq_base_library",
             "namespace_uris": null,
-            "updated_timestamp": "2024-04-09T14:31:48.609865+00:00",
+            "updated_timestamp": "2023-11-29T04:29:25.614238+00:00",
             "unlink_relative_name": false
         }
     ],
@@ -604,7 +532,7 @@
             "display_name": "Raw unscaled quantity",
             "relative_name": "raw_quantity",
             "quantity_symbol": "",
-            "updated_timestamp": "2022-09-30T17:42:33.990362+00:00",
+            "updated_timestamp": "2022-09-14T05:16:01.824244+00:00",
             "unlink_relative_name": false
         }
     ],
@@ -629,7 +557,7 @@
                 "Double Click",
                 "Click and Hold"
             ],
-            "updated_timestamp": "2024-07-04T20:31:30.186851+00:00",
+            "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
             "unlink_relative_name": false,
             "enumeration_color_codes": [
                 "#000000",
@@ -663,7 +591,7 @@
                 "Add Value",
                 "Negate Value"
             ],
-            "updated_timestamp": "2024-07-04T20:34:07.154156+00:00",
+            "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
             "unlink_relative_name": false,
             "enumeration_color_codes": [
                 "#000000",
@@ -704,7 +632,7 @@
             "opcua_unit_id": null,
             "relative_name": "%",
             "conversion_offset": 0,
-            "updated_timestamp": "2024-01-29T19:52:17.643536+00:00",
+            "updated_timestamp": "2024-07-09T18:05:49.057805+00:00",
             "unlink_relative_name": false,
             "conversion_multiplier": 1
         }
