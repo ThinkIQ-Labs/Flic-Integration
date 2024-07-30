@@ -141,7 +141,7 @@ function getSendMessageQuery(aPayload) {
 					break;
 
 				case "Write Value":
-					if(targetAttrDataType=='ENUMERATION'){
+					if(targetAttrDataType=='ENUMERATION' && (argument === null || argument === '')){
 						var newValue = targetAttrEnumValues[0];
 						if(targetAttrEnumValue!=null){
 							newValue = targetAttrEnumValue;
