@@ -1,10 +1,4 @@
-const authenticator = {
-	"graphQlEndpoint": "https://xxx.xxx.thinkiq.net/graphql",
-	"clientId": "ThinkIQ.GraphQL.xxx",
-	"clientSecret": "xxx-xxx-xxx-xxx-xxx",
-	"role": "xxx_ro_group",
-	"userName": "ThinkIQ.GraphQL.xxx",
-};
+const authenticator = require('./smip').authenticator;
 
 var buttonManager = require("buttons");
 var http = require("http");
@@ -147,7 +141,7 @@ function getSendMessageQuery(aPayload) {
 					break;
 
 				case "Write Value":
-					if(targetAttrDataType=='ENUMERATION'){
+					if(targetAttrDataType=='ENUMERATION' && (argument === null || argument === '')){
 						var newValue = targetAttrEnumValues[0];
 						if(targetAttrEnumValue!=null){
 							newValue = targetAttrEnumValue;
@@ -298,7 +292,10 @@ function postMessage(obj) {
 				
 				// find battery status attribute and add to base query
 				var batteryAttrIndex = 0;
-				while(data.attributes[0].onObject.attributes[batteryAttrIndex].displayName != "Battery Status" && batteryAttrIndex < data.attributes[0].onObject.attributes.lenth){
+				while(
+					data.attributes[0].onObject.attributes[batteryAttrIndex].displayName != "Battery Status" && 
+					batteryAttrIndex < data.attributes[0].onObject.attributes.length
+				){
 					batteryAttrIndex++;
 				}
 				if(data.attributes[0].onObject.attributes[batteryAttrIndex].displayName == "Battery Status"){
