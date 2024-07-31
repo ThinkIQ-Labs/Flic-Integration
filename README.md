@@ -69,7 +69,7 @@ const authenticator = {
 
 - We are now ready to see if this all works. Let's map a button in the Hub phone app. Once this is finished, the Flic4SMIP module should be intercepting click events. Since we haven't created a Flic Receiver (next step) in the SMIP yet, the code throws an error like so:
  
-![Flick SDK error](./img/flic_sdk_error.png)
+![Flic SDK error](./img/flic_sdk_error.png)
 
 - Create an instance of the Flic Receiver type anywhere in your SMIP model
 - Click some more and validate that data is flowing into the SMIP by checking the raw data of the Flic Receiver's messages attribute.
@@ -112,7 +112,7 @@ You'll need to install the Flic app on a smart phone to be able to get a configu
 
 Congratulations. Your Hub knows the Flic Smart Buttons that were previously paired (and probably shipped to you with the Hub). The JavaScript Flic4SMIP module should be running and sending Flic Button click events to the SMIP as configured there. However, ...
 
-... using the Flick phone app you can remove buttons and add buttons at will. You can discover new button click events in the SMIP and configure them to do a variety of actions and target any attribute in your model. 
+... using the Flic phone app you can remove buttons and add buttons at will. You can discover new button click events in the SMIP and configure them to do a variety of actions and target any attribute in your model. 
 
 Go click!!!
 
