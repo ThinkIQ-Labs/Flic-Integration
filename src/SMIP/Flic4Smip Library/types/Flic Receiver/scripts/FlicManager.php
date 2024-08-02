@@ -17,6 +17,11 @@ $user = Factory::getUser();
 
 <div id="app">
 
+    <wait-indicator
+        :display='showWaitIndicator'
+        mode='Regular'
+	></wait-indicator>
+
     <div class="row">            
         <div class="col-12">
             <h1 class="pb-2 pt-2" style="font-size:2.5rem; color:#126181;">
@@ -107,6 +112,7 @@ $user = Factory::getUser();
                 pageTitle: "Manage Flic Buttons and Events",
                 context:<?php echo json_encode($context)?>,
                 user:<?php echo json_encode($user)?>,
+                showWaitIndicator: false,
                 buttons: [],
                 flicManagerId: 0,
                 flicButtonTypeId: 0,
@@ -115,8 +121,13 @@ $user = Factory::getUser();
         },
         mounted: async function () {
             WinDoc.title = this.pageTitle;
+
+            this.showWaitIndicator = true;
+            
             await this.GetFlicEventsAsync();
             await this.GetFlicButtonsAsync();
+            
+            this.showWaitIndicator = false;
         },
         methods: {
             ResetMapping: function(aMapping){
@@ -129,6 +140,9 @@ $user = Factory::getUser();
                 aMapping.attributes.find(x=>x.displayName=='Flic Mode').enumerationName = null;
             },
             SaveMappingAsync: async function(aMapping){
+                
+                this.showWaitIndicator = true;
+                
                 let query = `
                     mutation m1 {
                         m1: updateAttribute(input: { id: "${aMapping.attributes.find(x=>x.displayName=='Target').id}", patch: { referencedNodeId: "${aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute.id}" } }) {
@@ -143,7 +157,8 @@ $user = Factory::getUser();
                     }
                 `;
                 let aResponse = await tiqJSHelper.invokeGraphQLAsync(query);
-
+                
+                this.showWaitIndicator = false;
             },
             OnTargetSelectAsync: async function(aMapping){
                 console.log(aMapping);
@@ -166,6 +181,8 @@ $user = Factory::getUser();
             },
             RemoveButtonAsync: async function(aButton){
                 
+                this.showWaitIndicator = true;
+
                 let query = `
                     mutation m1 {
                         deleteObject(input:{ id:"${aButton.buttonMapping.id}"}) {
@@ -177,10 +194,14 @@ $user = Factory::getUser();
 
                 await this.GetFlicButtonsAsync();
 
+                this.showWaitIndicator = false;
+
             },
 
             AddButtonAsync: async function(aButton){
                 
+                this.showWaitIndicator = true;
+
                 if(this.flicButtonTypeId==0){
                     await this.GetFlicButtonTypeAsync();
                 }
@@ -258,6 +279,8 @@ $user = Factory::getUser();
                 aResponse = await tiqJSHelper.invokeGraphQLAsync(query);
 
                 await this.GetFlicButtonsAsync();
+
+                this.showWaitIndicator = false;
 
             },
             GetFlicButtonTypeAsync: async function(){
@@ -338,12 +361,29 @@ query q1 {
                 this.buttons.forEach(aButton=>{
                     aButton.buttonMapping=null;
                 });
-                buttons.forEach(aButton => {
+                for(let i=0; i<buttons.length; i++){
+                    const aButton = buttons[i];
                     let aPairedButton = this.buttons.find(x=>x.bdaddr==aButton.attributes.find(x=>x.displayName=="mac address").stringValue);
                     if(aPairedButton){
+                        // validate name has not changed
+                        if(aPairedButton.name != aButton.attributes.find(x=>x.displayName=="Name").stringValue){
+                            query = `
+                                mutation m1 {
+                                    mutate_displayName: updateObject(input: { id: "${aButton.id}", patch: { displayName: "${aPairedButton.name} (${aPairedButton.bdaddr})" } }) {
+                                        clientMutationId
+                                    }
+                                    mutate_name: updateAttribute(input: { id: "${aButton.attributes.find(x=>x.displayName=="Name").id}", patch: { stringValue: "${aPairedButton.name}" } }) {
+                                        clientMutationId
+                                    }
+
+                                }
+                            `;
+                            aResponse = await tiqJSHelper.invokeGraphQLAsync(query);
+
+                        }
                         aPairedButton.buttonMapping = aButton;
                     }
-                });
+                }
             },
             GetFlicEventsAsync: async function () {
                 let startDate = moment().add(-10,'day');
