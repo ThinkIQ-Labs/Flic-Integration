@@ -32,16 +32,16 @@ At this point you can either move on and add buttons to the Hub, or head to Sett
  
 ![Enable SDK](./img/flic_enable_sdk.png)
 
-### Step 3: Copy the Flic2SMIP JavaScript Module
+### Step 3: Copy the Flic4SMIP JavaScript Module
 
 - Access the Flic [Hub SDK](https://hubsdk.flic.io/) 
 - We never got the auto-detect to work. Instead, use the Hub's IP address and the factory password to connect to the IDE.
 
 ![Hub SDK](./img/flic_sdk_blank.png) This is very cool. Modules go on the left. Console and CLI is right-bottom. Code goes into right-top.
  
-- Create a new module (Flic2SMIP works as a name) and copy the JavaScript [module code](./src/flic/main.js) from this repo.
+- Create a new module (Flic4SMIP works as a name) and copy the JavaScript [module code](./src/flic/main.js) from this repo.
  
-![Flic2SMIP module](./img/flic_sdk_with_module.png)
+![Flic4SMIP module](./img/flic_sdk_with_module.png)
 
 - Check the "Restart after crash" option. This ensures that the Hub automatically starts our module not only after crashes but more importantly after power recycling events.
 - There is a Play/Stop Button button: use that to run a module and to stop it. There should be no compile errors in the console
@@ -61,15 +61,15 @@ const authenticator = {
 	"clientId": "Flic4SMIP Authenticator",
 	"clientSecret": "__xyz__-_12_-_34_-_56_-_____xyz____",
 	"role": "smip_instance_name_group",
-	"userName": "Flic4SMIP Authenticator",
+	"userName": "Flic4SMIP Authenticator"
 };
 ```
 
 ### Step 6: Register a Button and Check Data Flow into SMIP
 
-- We are now ready to see if this all works. Let's map a button in the Hub phone app. Once this is finished, the Flic2SMIP module should be intercepting click events. Since we haven't created a Flic Receiver (next step) in the SMIP yet, the code throws an error like so:
+- We are now ready to see if this all works. Let's map a button in the Hub phone app. Once this is finished, the Flic4SMIP module should be intercepting click events. Since we haven't created a Flic Receiver (next step) in the SMIP yet, the code throws an error like so:
  
-![Flick SDK error](./img/flic_sdk_error.png)
+![Flic SDK error](./img/flic_sdk_error.png)
 
 - Create an instance of the Flic Receiver type anywhere in your SMIP model
 - Click some more and validate that data is flowing into the SMIP by checking the raw data of the Flic Receiver's messages attribute.
@@ -110,9 +110,9 @@ You'll need to install the Flic app on a smart phone to be able to get a configu
 
 ### Step 3: Configure more Buttons. Improve your Workflows.
 
-Congratulations. Your Hub knows the Flic Smart Buttons that were previously paired (and probably shipped to you with the Hub). The JavaScript Flic2SMIP module should be running and sending Flic Button click events to the SMIP as configured there. However, ...
+Congratulations. Your Hub knows the Flic Smart Buttons that were previously paired (and probably shipped to you with the Hub). The JavaScript Flic4SMIP module should be running and sending Flic Button click events to the SMIP as configured there. However, ...
 
-... using the Flick phone app you can remove buttons and add buttons at will. You can discover new button click events in the SMIP and configure them to do a variety of actions and target any attribute in your model. 
+... using the Flic phone app you can remove buttons and add buttons at will. You can discover new button click events in the SMIP and configure them to do a variety of actions and target any attribute in your model. 
 
 Go click!!!
 
@@ -131,4 +131,4 @@ _Note:_ You can use the phone app for the Hub to _forget_ previously used WiFi n
 
 ![Flic Cat5 Only](./img/flic_cat5_only.png)
 
-- If a Hub is without power for a while and the Flic2SMIP JavaScript module doesn't startup automatically, you'll have to help by connecting to the Flic Hub SDK / IDE and manually starting the module.
+- If a Hub is without power for a while and the Flic4SMIP JavaScript module doesn't startup automatically, you'll have to help by connecting to the Flic Hub SDK / IDE and manually starting the module.

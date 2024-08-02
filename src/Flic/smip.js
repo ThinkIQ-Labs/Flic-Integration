@@ -1,7 +1,7 @@
 exports.authenticator = {
-	"graphQlEndpoint": "https://xxx.xxx.thinkiq.net/graphql",
-	"clientId": "ThinkIQ.GraphQL.xxx",
+	"graphQlEndpoint": "https://xxx.thinkiq.net/graphql",
+	"clientId": "Flic4SMIP Authenticator",
 	"clientSecret": "xxx-xxx-xxx-xxx-xxx",
-	"role": "xxx_ro_group",
-	"userName": "ThinkIQ.GraphQL.xxx",
+	"role": "xxx_group",
+	"userName": "Flic4SMIP Authenticator",
 };
