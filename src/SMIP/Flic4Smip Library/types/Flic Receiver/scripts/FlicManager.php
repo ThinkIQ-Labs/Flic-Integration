@@ -33,8 +33,8 @@ $user = Factory::getUser();
     </div>
 
     <div class="row">
-        <div class="col-3" v-for="aButton in buttons">
-            <div class="card my-2" style="width: 25rem; height: 550px;" :style="aButton.events[0].i==1 ? 'background-color: aliceblue;' : ''" >
+        <div class="col-4" v-for="aButton in buttons">
+            <div class="card my-2" style="width: 30rem; height: 610px;" :style="aButton.events[0].i==1 ? 'background-color: aliceblue;' : ''" >
                 <div class="card-body">
                     <h5 class="card-title">{{aButton.name}}</h5>
                     <p class="card-text">{{aButton.bdaddr}}</p>
@@ -63,29 +63,33 @@ $user = Factory::getUser();
                                         <input type="text" class="form-control" placeholder="" v-model="aMapping.attributes.find(x=>x.displayName=='Argument').stringValue" data-toggle="tooltip" title="Value to apply.">
                                     </div>
                                 </div>
-                                <div class="my-2">
-                                    <span data-toggle="tooltip" title="Pick target attribute."><tree-picker class="my-2"
-                                        :picker-name='`mapping_target_${aMapping.id}`'
-                                        display-mode='instance'
-                                        content='Select a target attribute'
-                                        :height='500'
-                                        default-expand-levels='0'
-                                        :default-root-node-fqn='null'
-                                        :default-root-node-id='null'
-                                        :prune-branches='false'
-                                        :branch-types='["organization","place,equipment","gateway","connector","opcua_object","object","material","person","attribute"]'
-                                        :leaf-types='["attribute","tag"]'
-                                        @on-select="(selectedNode)=>{selectedValue=selectedNode; OnTargetSelectAsync(aMapping);}"
-                                    ></tree-picker></span>
-                                    Target
-                                    <span v-if="aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute!=null">
-                                        : <i>"{{aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute.displayName}}"</i>
-                                    </span>
-
-                                    <button class="btn btn-sm btn-info float-end" @click="SaveMappingAsync(aMapping)" data-toggle="tooltip" title="Save setting configuration.">
-                                        <i class="fa-regular fa-floppy-disk fa-lg" style="color:tiq-primary;"></i>
-                                    </button>
-
+                                <div class="my-2 row">
+                                    <div class="col-1 pt-3">
+                                        <span data-toggle="tooltip" title="Pick target attribute."><tree-picker class="my-2"
+                                            :picker-name='`mapping_target_${aMapping.id}`'
+                                            display-mode='instance'
+                                            content='Select a target attribute'
+                                            :height='500'
+                                            default-expand-levels='0'
+                                            :default-root-node-fqn='null'
+                                            :default-root-node-id='null'
+                                            :prune-branches='false'
+                                            :branch-types='["organization","place,equipment","gateway","connector","opcua_object","object","material","person","attribute"]'
+                                            :leaf-types='["attribute","tag"]'
+                                            @on-select="(selectedNode)=>{selectedValue=selectedNode; OnTargetSelectAsync(aMapping);}"
+                                        ></tree-picker></span>
+                                    </div>
+                                    <div class="col-10 px-4">
+                                        Target
+                                        <span v-if="aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute!=null">
+                                            : <br/><i>"{{aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute.partOf.displayName}} / {{aMapping.attributes.find(x=>x.displayName=='Target').referencedAttribute.displayName}}"</i>
+                                        </span>
+                                    </div>
+                                    <div class="col-1 pt-3">
+                                        <button class="btn btn-sm btn-info float-end" @click="SaveMappingAsync(aMapping)" data-toggle="tooltip" title="Save setting configuration.">
+                                            <i class="fa-regular fa-floppy-disk fa-lg" style="color:tiq-primary;"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -346,6 +350,9 @@ query q1 {
                 timestamp
                 value
               }
+              partOf{
+                displayName
+              }
             }
           }
         }
@@ -386,7 +393,7 @@ query q1 {
                 }
             },
             GetFlicEventsAsync: async function () {
-                let startDate = moment().add(-10,'day');
+                let startDate = moment().add(-30,'day');
                 let endDate = moment();
                 let query = `
                     query q1 {
